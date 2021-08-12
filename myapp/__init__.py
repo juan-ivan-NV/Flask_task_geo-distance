@@ -1,13 +1,9 @@
-from flask import Flask
+from flask import Flask, redirect
 
-from .api.routes import api
-from .site.routes import site
+#from route import redir
+# import config 
 
-def create_app():
+main_app = Flask(__name__)
 
-    app = Flask(__name__)
-
-    app.register_blueprint(api)
-    app.register_blueprint(site)
-
-    return app
+# blieprint
+main_app.register_blueprint(route, url_prefix="")
