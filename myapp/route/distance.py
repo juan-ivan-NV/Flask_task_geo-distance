@@ -13,6 +13,8 @@ route = Blueprint("route", __name__, template_folder = "templates")
 # Yandex variables
 
 api_key = config.API_KEY
+"""https://geocode-maps.yandex.ru/1.x/?apikey=ваш 
+API-ключ&geocode=Москва,+Тверская+улица,+дом+7"""
 api_url = ("https://geocode-maps.yandex.ru/1.x/?apikey={}" +
         "&format=json&geocode={}&lang=en-US")
 
@@ -24,6 +26,7 @@ def get_distance(lat1: float, lng1: float,
         return mpu.haversine_distance(lat1, lng1), (lat2, lng2)).km
 
 def api_request(address_request: str):
+
         """Function to validate if the request (address) 
         is valid or not"""
 
@@ -42,12 +45,16 @@ def api_request(address_request: str):
 
 
 def json_req_data(json_api_data: dict):
+        
         """ This functions extracts usefull data from the 
         api response dictionary"""
 
+        
 
 def address_request():
 
+        address_request = None
+        
         pass
 
 def logging_request():
