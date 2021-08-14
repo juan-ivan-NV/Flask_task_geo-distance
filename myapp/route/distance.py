@@ -49,11 +49,23 @@ def json_req_data(json_api_data: dict):
         """ This functions extracts usefull data from the 
         api response dictionary"""
 
-        
+        MKAD = [55.898947, 37.632206]
+
+        position = (json_api_data["response"]["GeoObjectCollection"]
+                        ["featureMember"][0]["GeoObject"]["Point"]["pos"]).split(" ")
+
+        lat = float(position[0])
+        long = float(position[1])
+
+        distance = get_distance(lat, long, MKAD[0], MKAD[1])
+
+        return distance
 
 def address_request():
 
-        address_request = None
+        logging.basicConfig(
+                
+        )
         
         pass
 
