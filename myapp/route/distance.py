@@ -57,21 +57,76 @@ def json_req_data(json_api_data: dict):
         lat = float(position[0])
         long = float(position[1])
 
+        json_dictionary = json.dumps([
+        (json_api_data["response"]["GeoObjectCollection"]["featureMember"]
+            [0]["GeoObject"]["name"])])
+
         distance = get_distance(lat, long, MKAD[0], MKAD[1])
 
-        return distance
+        return json_dictionary, distance
 
 def address_request():
 
-        logging.basicConfig(
+        """Function to order the values to be showed in the html template"""
+
+        address = None
+        distance = None
+        json_message = {}
+        validation = False
+
+        if request.method == 'OST':
+                address = request.form['address']
                 
+                if address_request == "":
+                        flash(f"Try with a valid location")
+                        return json_message, address, distance, validation
+                else: 
+                        address = address.replace(" ", "+")
+                        validation, api_data = api_request(address)
+                        
+                        if validation is False:
+                                flash(f"Validation false, noresults found")
+                                return json_message, address, distance, validation 
+                        else:
+                                flash (f"address entered {address}", "info")
+                                json_message, distance = json_req_data(api_data)
+                                return json_message, address, distance, validation
+                
+        return json_message, address, distance, validation
+
+
+def logging_request(request_json: dict, user_post_query: str,
+                    distance: float, valid_request: bool):
+
+        """Function to save info in the log data file"""
+
+        logging.basicConfig(
+            filename='history.log',
+            level=logging.DEBUG,
+            format='%(asctime)s %(levelname)s %(threadName)s : %(message)s'
         )
-        
-        pass
+        if valid_request is True:
+                current_app.logger.info(f"JSON {request_json}")
+                current_app.logger.info(f"Searched for {user_post_query}")
+                current_app.logger.info(f"Distance between points is: {distance} Km")
+        else:
+                current_app.logger.info("Invalid request")
 
-def logging_request():
 
-        pass
+@mkad_route.route("/", methods=['POST', 'GET'])
+@mkad_route.route("/home", methods=['POST', 'GET'])
+
 
 def route_search():
-        pass
+        
+        """function to call the other functions to process the direction request
+        and return the data to the html template"""
+
+        result_json, address, distance, valid_request =address_request()
+        logging_request(result_json, address, distance, valid_request)
+        
+        return render_template('search.html',
+        address = address,
+        api_key = config.API_KEY,
+        result_json = result_json
+        )
