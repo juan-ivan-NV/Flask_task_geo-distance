@@ -1,0 +1,59 @@
+2021-08-15 16:40:30,219 INFO Thread-4 : Invalid request
+2021-08-15 16:40:30,235 INFO Thread-4 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "[35m[1mGET /route/ HTTP/1.1[0m" 500 -
+2021-08-15 16:40:30,284 INFO Thread-5 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "GET /route/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-08-15 16:40:30,286 INFO Thread-6 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "GET /route/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-08-15 16:40:30,333 INFO Thread-7 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "GET /route/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-08-15 16:40:30,471 INFO Thread-8 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "[32mGET / HTTP/1.1[0m" 302 -
+2021-08-15 16:40:30,475 INFO Thread-9 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "[32mGET /route HTTP/1.1[0m" 308 -
+2021-08-15 16:40:30,479 INFO Thread-10 : Invalid request
+2021-08-15 16:40:30,485 INFO Thread-10 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "[35m[1mGET /route/ HTTP/1.1[0m" 500 -
+2021-08-15 16:40:30,498 INFO Thread-12 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "GET /route/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-08-15 16:40:30,498 INFO Thread-11 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "GET /route/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-08-15 16:40:30,774 INFO Thread-13 : 127.0.0.1 - - [15/Aug/2021 16:40:30] "GET /route/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-08-15 16:45:00,666 INFO Thread-3 : Invalid request
+2021-08-15 16:45:00,683 INFO Thread-3 : 127.0.0.1 - - [15/Aug/2021 16:45:00] "[35m[1mGET /route/ HTTP/1.1[0m" 500 -
+2021-08-15 16:45:00,733 INFO Thread-4 : 127.0.0.1 - - [15/Aug/2021 16:45:00] "GET /route/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-08-15 16:45:00,735 INFO Thread-5 : 127.0.0.1 - - [15/Aug/2021 16:45:00] "GET /route/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-08-15 16:45:00,751 INFO Thread-6 : 127.0.0.1 - - [15/Aug/2021 16:45:00] "GET /route/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-08-15 16:46:02,484 INFO Thread-4 : Invalid request
+2021-08-15 16:46:02,493 INFO Thread-4 : 127.0.0.1 - - [15/Aug/2021 16:46:02] "GET /route/ HTTP/1.1" 200 -
+2021-08-15 16:46:02,533 INFO Thread-5 : 127.0.0.1 - - [15/Aug/2021 16:46:02] "[33mGET /route/static/CSS/style.css HTTP/1.1[0m" 404 -
+2021-08-15 16:46:02,534 INFO Thread-6 : 127.0.0.1 - - [15/Aug/2021 16:46:02] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:46:02,537 INFO Thread-7 : 127.0.0.1 - - [15/Aug/2021 16:46:02] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:46:04,120 INFO Thread-8 : 127.0.0.1 - - [15/Aug/2021 16:46:04] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:46:04,142 INFO Thread-9 : 127.0.0.1 - - [15/Aug/2021 16:46:04] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:48:03,409 INFO Thread-10 : 127.0.0.1 - - [15/Aug/2021 16:48:03] "[35m[1mPOST /route/ HTTP/1.1[0m" 500 -
+2021-08-15 16:48:03,425 INFO Thread-11 : 127.0.0.1 - - [15/Aug/2021 16:48:03] "GET /route/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-08-15 16:48:03,427 INFO Thread-12 : 127.0.0.1 - - [15/Aug/2021 16:48:03] "GET /route/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-08-15 16:48:03,436 INFO Thread-13 : 127.0.0.1 - - [15/Aug/2021 16:48:03] "GET /route/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-08-15 16:51:59,922 INFO Thread-4 : Invalid request
+2021-08-15 16:51:59,928 INFO Thread-4 : 127.0.0.1 - - [15/Aug/2021 16:51:59] "GET /route/ HTTP/1.1" 200 -
+2021-08-15 16:51:59,983 INFO Thread-5 : 127.0.0.1 - - [15/Aug/2021 16:51:59] "[33mGET /route/static/CSS/style.css HTTP/1.1[0m" 404 -
+2021-08-15 16:51:59,986 INFO Thread-7 : 127.0.0.1 - - [15/Aug/2021 16:51:59] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:51:59,988 INFO Thread-6 : 127.0.0.1 - - [15/Aug/2021 16:51:59] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:52:01,361 INFO Thread-8 : 127.0.0.1 - - [15/Aug/2021 16:52:01] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:52:01,377 INFO Thread-9 : 127.0.0.1 - - [15/Aug/2021 16:52:01] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:52:24,227 INFO Thread-11 : 127.0.0.1 - - [15/Aug/2021 16:52:24] "[35m[1mPOST /route/ HTTP/1.1[0m" 500 -
+2021-08-15 16:52:24,242 INFO Thread-12 : 127.0.0.1 - - [15/Aug/2021 16:52:24] "GET /route/?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+2021-08-15 16:52:24,242 INFO Thread-13 : 127.0.0.1 - - [15/Aug/2021 16:52:24] "GET /route/?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+2021-08-15 16:52:24,256 INFO Thread-14 : 127.0.0.1 - - [15/Aug/2021 16:52:24] "GET /route/?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2021-08-15 16:53:11,903 INFO Thread-4 : Invalid request
+2021-08-15 16:53:11,910 INFO Thread-4 : 127.0.0.1 - - [15/Aug/2021 16:53:11] "GET /route/ HTTP/1.1" 200 -
+2021-08-15 16:53:11,975 INFO Thread-5 : 127.0.0.1 - - [15/Aug/2021 16:53:11] "[33mGET /route/static/CSS/style.css HTTP/1.1[0m" 404 -
+2021-08-15 16:53:11,976 INFO Thread-6 : 127.0.0.1 - - [15/Aug/2021 16:53:11] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:11,978 INFO Thread-7 : 127.0.0.1 - - [15/Aug/2021 16:53:11] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:13,614 INFO Thread-8 : 127.0.0.1 - - [15/Aug/2021 16:53:13] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:13,629 INFO Thread-9 : 127.0.0.1 - - [15/Aug/2021 16:53:13] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:13,639 INFO Thread-10 : 127.0.0.1 - - [15/Aug/2021 16:53:13] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-08-15 16:53:19,403 INFO Thread-11 : JSON ["Golestan"]
+2021-08-15 16:53:19,403 INFO Thread-11 : Searched for 55.43960306538722,+37.772963458185835
+2021-08-15 16:53:19,403 INFO Thread-11 : Distance between points is: 65.7468984818936 Km
+2021-08-15 16:53:19,405 INFO Thread-11 : 127.0.0.1 - - [15/Aug/2021 16:53:19] "POST /route/ HTTP/1.1" 200 -
+2021-08-15 16:53:19,423 INFO Thread-12 : 127.0.0.1 - - [15/Aug/2021 16:53:19] "[33mGET /route/static/CSS/style.css HTTP/1.1[0m" 404 -
+2021-08-15 16:53:19,427 INFO Thread-13 : 127.0.0.1 - - [15/Aug/2021 16:53:19] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:19,429 INFO Thread-14 : 127.0.0.1 - - [15/Aug/2021 16:53:19] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:20,023 INFO Thread-15 : 127.0.0.1 - - [15/Aug/2021 16:53:20] "[33mGET /route/static/JS/script.js HTTP/1.1[0m" 404 -
+2021-08-15 16:53:20,039 INFO Thread-16 : 127.0.0.1 - - [15/Aug/2021 16:53:20] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -
+2021-08-15 17:06:21,203 INFO Thread-4 : Invalid request
+2021-08-15 17:06:21,208 INFO Thread-4 : 127.0.0.1 - - [15/Aug/2021 17:06:21] "GET /route/ HTTP/1.1" 200 -
+2021-08-15 17:06:21,259 INFO Thread-5 : 127.0.0.1 - - [15/Aug/2021 17:06:21] "[33mGET /route/static/JS/map_script.js HTTP/1.1[0m" 404 -

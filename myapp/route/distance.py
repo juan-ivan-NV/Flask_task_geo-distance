@@ -8,7 +8,8 @@ import mpu
 # keys
 import config
 
-route = Blueprint("route", __name__, template_folder = "templates")
+mkad_route = Blueprint("mkad_route", __name__, 
+                       static_folder="static", template_folder = "templates")
 
 # Yandex variables
 
@@ -23,7 +24,7 @@ def get_distance(lat1: float, lng1: float,
 
         """function to calculate distance"""
 
-        return mpu.haversine_distance(lat1, lng1), (lat2, lng2)).km
+        return mpu.haversine_distance((lat1, lng1), (lat2, lng2))
 
 def api_request(address_request: str):
 
@@ -33,8 +34,9 @@ def api_request(address_request: str):
         api_response = urllib.request.urlopen(api_url.format(
                 api_key, address_request)).read()
         api_json = json.loads(api_response)
-        found_data = (api_json["response"]["GeoObjectCollection"]
-                      ["metaDataProperty"]["geocoderResponseMetaData"]["found"]
+        found_data = (
+            api_json["response"]["GeoObjectCollection"]
+            ["metaDataProperty"]["GeocoderResponseMetaData"]["found"]
         )
 
         if found_data == "0":
@@ -74,7 +76,7 @@ def address_request():
         json_message = {}
         validation = False
 
-        if request.method == 'OST':
+        if request.method == 'POST':
                 address = request.form['address']
                 
                 if address_request == "":
@@ -112,7 +114,7 @@ def logging_request(request_json: dict, user_post_query: str,
         else:
                 current_app.logger.info("Invalid request")
 
-
+# decorators for the blueprints
 @mkad_route.route("/", methods=['POST', 'GET'])
 @mkad_route.route("/home", methods=['POST', 'GET'])
 
@@ -122,7 +124,7 @@ def route_search():
         """function to call the other functions to process the direction request
         and return the data to the html template"""
 
-        result_json, address, distance, valid_request =address_request()
+        result_json, address, distance, valid_request = address_request()
         logging_request(result_json, address, distance, valid_request)
         
         return render_template('search.html',
