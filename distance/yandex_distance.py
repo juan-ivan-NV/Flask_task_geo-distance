@@ -1,4 +1,4 @@
-# flask imports
+from flask import jsonify
 import requests
 from math import sin, cos, sqrt, atan2, radians
 
@@ -43,46 +43,53 @@ def address_coordinates(address, checkMKAD = False):
 
     try: 
         position = response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']
+        address2 = response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["name"]
         position = position.split(' ')
         position = list(map(float, position))
         point2 = [position[0], position[1]] 
-        print(point2)
-        return point2 
+        print(point2, address2)
+        return point2, address2
 
     except:
         return [0,0]
 
     return x
 
-def get_coordintes(address):
 
-    global p1, p2, p2_in_MKAD
+def get_coordintes(coords):
+
+    global p1, p2, address2, p2_in_MKAD
     p1 = MKAD_CENTER
-    p2 = address_coordinates(address)
-    p2_in_MKAD = address_coordinates(address, checkMKAD = True)
+    p2, address2 = address_coordinates(coords)
+    p2_in_MKAD = address_coordinates(coords, checkMKAD = True)[0]
 
-def logging_distances(address):
 
-    #if p2 == [0,0]:
-    #    log = '------ 'p2 + ' not found------'
-    #    current_app.logger.error(log)
-    #    return jsonify({'status':400, 'message':'Bad Request', 'data':log})
+def logging_distances():
+
+    introduced_coords = "37.902943279027895,55.41663012089028"    
     
+    get_coordintes(introduced_coords)
+
     if p2 == p2_in_MKAD:
-        log = p2 + ' is inside MKAD, distance not calculated'
+        log1 = str(p2) + str(p2) + ' is inside MKAD, distance not calculated'
         #current_app.logger.info(log)
-        print(log)
-        return jsonify({'status':200, 'message':'Success',
-                        'data':{'address1' : 'MKAD', 'coordinate1': point1,
-                                'address2': address2, 'coordinate2': point2,
-                                'distance': 0, 'unit': unit, 'info': log
+        print(log1)
+        return ({'status':200, 'message':'Success',
+                        'data':{'address1' : 'MKAD', 'coordinate1': p1,
+                                'address2': address2, 'coordinate2': p2,
+                                'distance': 0, 'unit': 'km', 'info': log1
                     }})
-            
+    
+    else:
+        
+        distance = calculate_distance_1(p1, p2)
+        
+        return ({'status':200, 'message':'Success',
+                 'data':{'address1' : 'MKAD', 'coordinate1': p1,
+                         'address2': address2, 'coordinate2': p2,
+                         'distance': distance, 'unit': 'km', 'info': ''
+            }})    
 
 
 
-address = "37.522257143027474,55.77884116736447"
-
-p2 = address_coordinates(address)
-
-print(calculate_distance_1(MKAD_CENTER, p2))
+print(logging_distances())
