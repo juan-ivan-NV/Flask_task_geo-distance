@@ -1,4 +1,0 @@
-
-API_KEY = "XXXXXXX"
-SECRET_KEY = "XXXXXX"
-
