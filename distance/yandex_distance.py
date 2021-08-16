@@ -7,16 +7,16 @@ import mpu
 #MKAD_CENTER = "37.6222,55.7518"
 MKAD_CENTER = [37.6222, 55.7518]
 MKAD_RADIUS = "0.2152,0.16"
-API_KEY = '60a38614-54fe-4fb4-a9fe-355b8f32c2cd'
+API_KEY = "xxxxx"
 EARTH_RADIUS = 6373.0
 
 # to define blueprint
 
 p1, p2, is_p2_in_MKAD = '','',''
 
-p1 = [0,0]
-p1[0] = float(input("type lat (should be float): "))
-p1[1] = float(input("type lng (should be float): "))
+#p1 = [0,0]
+#p1[0] = float(input("type lat (should be float): "))
+#p1[1] = float(input("type lng (should be float): "))
 
 
 def calculate_distance_1(p1, p2):
@@ -25,25 +25,39 @@ def calculate_distance_1(p1, p2):
                                   (MKAD_CENTER[0], MKAD_CENTER[1]))
 
 
+def address_coordinates(address):
 
-def calculate_distance_2(p1, p2):
-    # Because Yandex API doesn't have calculate distance method
-    # Source code from https://www.kite.com/python/answers/how-to-find-the-distance-between-two-lat-long-coordinates-in-python
+    print(address)
+    """url = ("https://geocode-maps.yandex.ru/1.x/?apikey={API_KEY}" +
+        "&geocode=55.54560447733747,37.59266627650848&format=json&results=1&lang=en-US")"""
 
-    point1 = p1
-    point2 = p2
+    url = ('https://geocode-maps.yandex.ru/1.x/?' + 'apikey=' + API_KEY
+                + '&geocode=' + address
+                + '&format=' + 'json'
+                + '&results=1'
+                + '&lang=en-US'
+            )
 
-    latitude = [radians(point1[0]), radians(point2[0])]
-    longitude = [radians(point1[1]), radians(point2[1])]
-    distance_latitude = latitude[0] - latitude[1]
-    distance_logitude = longitude[0] - longitude[1]
 
-    a = sin(distance_latitude / 2)**2 + cos(latitude[0]) * cos(latitude[1]) * sin(distance_logitude / 2)**2
-    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    response = requests.get(url).json()
 
-    distance = EARTH_RADIUS * c
+    print(response)
 
-    return distance
+    try: 
+        position = response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']
+        position = position.split(' ')
+        position = list(map(float, position))
+        point2 = [position[1], position[0]] 
+        print(point2)
+        return point2 
 
-print(calculate_distance_1(p1, MKAD_CENTER))
-print(calculate_distance_2(p1, MKAD_CENTER))
+    except:
+        return [0,0]
+
+    return x
+
+address = "55.54560447733747,37.59266627650848"
+
+p2 = address_coordinates(address)
+
+print(calculate_distance_1(MKAD_CENTER, p2))
