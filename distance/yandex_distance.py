@@ -1,4 +1,4 @@
-from flask import jsonify
+from flask import Blueprint, jsonify, current_app
 import requests
 from math import sin, cos, sqrt, atan2, radians
 
@@ -7,22 +7,31 @@ import mpu
 #MKAD_CENTER = "37.6222,55.7518"
 MKAD_CENTER = [37.6222,55.7518]
 MKAD_RADIUS = "0.2152,0.16"
-API_KEY = "xxxxx"
+API_KEY = "XXXXXXXX"
 EARTH_RADIUS = 6373.0
 
 # to define blueprint
 
+yandex_dist = Blueprint('yandex_dist', __name__, url_prefix='/yandex')
+
 p1, p2, p2_in_MKAD = '','',''
+
+@yandex_dist.route("/", methods=["GET"])
+def home():
+    return """
+    <table>
+        <tr>
+            <td>/(address)</td>
+            <td>for calculate address from MKAD</td>
+        </tr>
+    </table>
+    """
+
 
 
 def calculate_distance_1(p1, p2):
 
-    """Function to calculate the distance between two coordinates
-    inputs 
-    p* = list of latitude and longitude"""
-
-    return mpu.haversine_distance((p1[0], p1[1]), 
-                                  (p2[0], p2[1]))
+    return mpu.haversine_distance((p1[0], p1[1]), (p2[0], p2[1]))
 
 
 def address_coordinates(address, checkMKAD = False):
@@ -42,18 +51,18 @@ def address_coordinates(address, checkMKAD = False):
     print(response)
 
     try: 
-        position = response['response']['GeoObjectCollection']['featureMember'][0]['GeoObject']['Point']['pos']
-        address2 = response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]["name"]
+        position = response['response']['GeoObjectCollection']['featureMember']\
+                   [0]['GeoObject']['Point']['pos']
+        place = response["response"]["GeoObjectCollection"]["featureMember"]\
+                   [0]["GeoObject"]["name"]
         position = position.split(' ')
         position = list(map(float, position))
-        point2 = [position[0], position[1]] 
-        print(point2, address2)
-        return point2, address2
+        point2 = [position[1], position[0]] 
+        print(point2, place)
+        return point2, place
 
     except:
         return [0,0]
-
-    return x
 
 
 def get_coordintes(coords):
@@ -64,32 +73,31 @@ def get_coordintes(coords):
     p2_in_MKAD = address_coordinates(coords, checkMKAD = True)[0]
 
 
-def logging_distances():
+@yandex_dist.route("/<address>")
+def logging_distances(address):
+   
+    introduced_coords = address
 
-    introduced_coords = "37.902943279027895,55.41663012089028"    
-    
     get_coordintes(introduced_coords)
 
     if p2 == p2_in_MKAD:
-        log1 = str(p2) + str(p2) + ' is inside MKAD, distance not calculated'
-        #current_app.logger.info(log)
+        log1 = str(p2) + ' is inside MKAD, distance not calculated'
+        current_app.logger.info(log1)
         print(log1)
-        return ({'status':200, 'message':'Success',
+        return jsonify({'status':200, 'message':'Success',
                         'data':{'address1' : 'MKAD', 'coordinate1': p1,
                                 'address2': address2, 'coordinate2': p2,
                                 'distance': 0, 'unit': 'km', 'info': log1
                     }})
-    
+
     else:
         
         distance = calculate_distance_1(p1, p2)
-        
-        return ({'status':200, 'message':'Success',
+        log1 = 'address 1 is MKAD, address 2 is ' + str(p2[0]) \
+                + str(p2[1]) + 'address: ' + address2
+        current_app.logger.info(log1)
+        return jsonify({'status':200, 'message':'Success',
                  'data':{'address1' : 'MKAD', 'coordinate1': p1,
                          'address2': address2, 'coordinate2': p2,
                          'distance': distance, 'unit': 'km', 'info': ''
             }})    
-
-
-
-print(logging_distances())
