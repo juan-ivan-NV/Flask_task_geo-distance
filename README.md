@@ -1,10 +1,3 @@
-
-example1: http://localhost:5000/yandex/(37.902943279027895,55.41663012089028)
-example2: http://localhost:5000/yandex/Kiev
-
-Activate env: $ 
-
-
 # TEST TASK: Flask-Yandex-Find-Distance
 
 ## Description
@@ -63,21 +56,34 @@ Execute the app
 
 ## Usage
 
-In your browser type
+* In your browser type ...
 
 <pre>http://localhost:5000/</pre>
 
-On screen
+You will she the app "homepage".
 
-<h2>Blueprint to measure distance from MKAD to another coordinate<h2>
+* To go to the Blueprint endpoint type on you browser...
 
-    <table>
-    <tr>
-        <td>/yandex</td>
-        <td>to use Yandex API</td>
-    </tr>
-    <tr>
-        <td>example:</td>
-        <td>http://localhost:5000/yandex</td>
-    </tr>
-    </table>
+<pre>http://localhost:5000/yandex</pre>
+
+You will se the page and a message from that endpoint.
+
+* To look for a location type a location, for example ...
+
+<pre>http://localhost:5000/yandex/Kyev</pre>
+
+You should see something like this.
+
+<pre>{
+            "data": {
+                "address1": "MKAD", 
+                "address2": "Kyiv", 
+                "coordinate1": [37.6222, 55.7518], 
+                "coordinate2": [50.450441, 30.52355], 
+                "distance": 755.5756107294386, 
+                "info": "", 
+                "unit": "km"}, 
+            "message": "Success", 
+            "status": 200
+            }
+            </pre>
