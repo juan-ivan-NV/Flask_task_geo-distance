@@ -15,7 +15,11 @@ def main_app():
     <table>
     <tr>
         <td>/yandex</td>
-        <td>for using Yandex API</td>
+        <td>to use Yandex API</td>
+    </tr>
+    <tr>
+        <td>example:</td>
+        <td>http://localhost:5000/yandex</td>
     </tr>
     </table>
     """
