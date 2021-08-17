@@ -2,9 +2,11 @@ from flask import Blueprint, jsonify, current_app
 import requests
 import mpu
 
+import config
+
 MKAD_CENTER = [37.6222,55.7518]
 MKAD_RADIUS = "0.2152,0.16"
-API_KEY = "60a38614-54fe-4fb4-a9fe-355b8f32c2cd"
+API_KEY = config.API_KEY 
 EARTH_RADIUS = 6373.0
 
 
@@ -69,7 +71,7 @@ def address_coordinates(address, checkMKAD = False):
         position = position.split(' ')
         position = list(map(float, position))
         point2 = [position[1], position[0]] 
-        print(point2, address2)
+        #print(point2, address2)
         return point2, address2
 
     except:

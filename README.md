@@ -26,6 +26,7 @@ Develop a Flask Blueprint to find the distance from the Moscow Ring Road to the 
 
 Requierements:
 
+    pytest
     Flask
     mpu
     virtualenv
@@ -55,6 +56,10 @@ Execute the app
 
 
 ## Usage
+
+* In the config.py file, set your API_KEY ...
+
+<pre>API_KEY = "lalalalalala"</pre>
 
 * In your browser type ...
 
@@ -92,6 +97,8 @@ You should see something like this.
 * To run the testcases run ...
 
 <pre>pytest</pre>
+
+You may see something like this 
 
 <pre>
 collected 5 items                                       
