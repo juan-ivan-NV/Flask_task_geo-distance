@@ -4,6 +4,7 @@
 
 Develop a Flask Blueprint to find the distance from the Moscow Ring Road to the specified address. The address is passed to the application in an HTTP request, if the specified address is located inside the MKAD, the distance does not need to be calculated. Add the result to the .log file.
 
+<a href = "https://yandex.ru/dev/maps/geocoder/doc/desc/concepts/about.html">Yandex Geocoder API</a>
 
 ## Requirements:
 
@@ -27,7 +28,6 @@ Requierements:
 
     Flask
     mpu
-    request
     virtualenv
     requests
 
@@ -87,3 +87,17 @@ You should see something like this.
             "status": 200
             }
             </pre>
+
+
+* To run the testcases run ...
+
+<pre>pytest</pre>
+
+<pre>
+collected 5 items                                       
+
+test_blueprint.py .....                                                [100%]
+
+================================ 5 passed in 13.73s ================================</pre>
+
+# Thanks (งツ)ว
